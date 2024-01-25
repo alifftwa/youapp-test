@@ -1,6 +1,10 @@
 import React from "react";
 
-const Textfield = ({ placeholder }) => {
+interface Props {
+  placeholder: string;
+}
+
+const Textfield = ({ placeholder }: Props) => {
   return (
     <div>
       <div className="my-4">

@@ -1,7 +1,11 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 
-const Password = ({ placeholder }) => {
+interface Props {
+  placeholder: string;
+}
+
+const Password = ({ placeholder }:Props) => {
   const [open, setOpen] = useState(false);
 
   // Handle toggle

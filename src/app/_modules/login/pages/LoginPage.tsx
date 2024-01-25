@@ -1,8 +1,8 @@
 "use client";
 
-import Password from "@/app/_components/password/Password";
-import Textfield from "@/app/_components/textfield/Textfield";
-import Layout from "@/app/_layout/Layout";
+import Password from "@/app/_components/fragments/password/Password";
+import Textfield from "@/app/_components/fragments/textfield/Textfield";
+import Layout from "@/app/_layout/login-regis/Layout";
 import { ArrowBackIos, Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 
