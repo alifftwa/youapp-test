@@ -1,5 +1,5 @@
-"use client";
+// "use client";
 
-import LoginPage from "@/app/_modules/login/pages/LoginPage";
+// import LoginPage from "@/app/_modules/login/pages/LoginPage";
 
-export default LoginPage;
+// export default LoginPage;

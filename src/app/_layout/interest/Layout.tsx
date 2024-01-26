@@ -1,20 +1,32 @@
 import { ArrowBackIos } from "@mui/icons-material";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
+  const finalSlashIndex = pathname.lastIndexOf("/");
+  const previousPathname = pathname.slice(0, finalSlashIndex);
   return (
     <div>
       <div className="w-full h-screen overflow-hidden bg-cover bg-gradient-to-bl from-[#1F4247] from-[0%] via-[#0D1D23] via-[56.18%] to-[#09141A] to-[100%] ">
         <div className="relative w-full flex pt-5 pl-3">
           <div className="flex">
             <ArrowBackIos />
-            <p className="font-semibold">Back</p>
+            <Link href={previousPathname}>
+              <button>
+                <p className="font-semibold">Back</p>
+              </button>
+            </Link>
           </div>
 
           <div className="absolute right-0 mr-4">
-            <button className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#ABFFFD] from-[2.64%] via-[#4599DB] via-[102.4%] to-[#AADAFF] to-[102.4%]">
-              Save
-            </button>
+            <Link href="/dashboard">
+              <button className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#ABFFFD] from-[2.64%] via-[#4599DB] via-[102.4%] to-[#AADAFF] to-[102.4%]">
+                Save
+              </button>
+            </Link>
           </div>
         </div>
 

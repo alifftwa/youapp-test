@@ -1,19 +1,27 @@
 import Card from "@/app/_components/fragments/card/Card";
 import Form from "@/app/_components/form/Form";
-import Layout from "@/app/_layout/about/Layout";
 import { ArrowBackIos } from "@mui/icons-material";
 import React from "react";
+import Router from "next/router";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const AboutEditPage = () => {
+  const pathname = usePathname();
+  const finalSlashIndex = pathname.lastIndexOf("/");
+  const previousPathname = pathname.slice(0, finalSlashIndex);
   return (
     <>
       <div className="h-full overflow-hidden bg-[#09141A]">
-        {/* <Layout> */}
-        <button className="relative flex mb-5 pt-5 pl-3">
-          <ArrowBackIos />
-          <p className="font-semibold">Back</p>
-          <p className="absolute font-semibold pl-1 left-36">@username</p>
-        </button>
+        {/* Button back */}
+        <Link href={previousPathname}>
+          <div className="relative flex mb-5 pt-5 pl-3">
+            <ArrowBackIos />
+            <label className="font-semibold">Back</label>
+            <p className="absolute font-semibold pl-1 left-36">@username</p>
+          </div>
+        </Link>
+
         <div className="mx-3">
           <div className="relative w-full h-48 mb-8 overflow-hidden rounded-xl bg-[#162329]">
             <div className="absolute bottom-3 left-3 font-semibold">
@@ -28,11 +36,13 @@ const AboutEditPage = () => {
               </div>
 
               <div className="absolute right-5">
-                <button>
-                  <p className="font-normal text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#F3EDA6] from-[-6.8%] via-[#F8FAE5] via-[89.01%] to-[#D5BE88] to-[100.43%]">
-                    save & update
-                  </p>
-                </button>
+                <Link href="/dashboard">
+                  <button>
+                    <p className="font-bold text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#F3EDA6] from-[-6.8%] via-[#F8FAE5] via-[89.01%] to-[#D5BE88] to-[100.43%]">
+                      save & update
+                    </p>
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -60,10 +70,10 @@ const AboutEditPage = () => {
 
           <Card
             CardName="Interest"
+            Nav="/interest"
             Text="Add in your interest to find a better match"
           />
         </div>
-        {/* </Layout> */}
       </div>
     </>
   );
