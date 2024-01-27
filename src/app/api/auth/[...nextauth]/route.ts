@@ -1,3 +1,4 @@
+import { access } from "fs";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -60,27 +61,32 @@ const authOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       if (session?.accessToken ?? false) {
-        const url = process.env.NEXT_PUBLIC_API_URL + "/get/profile";
+        const url = process.env.NEXT_PUBLIC_API_URL + "/api/login";
         const userRes = await fetch(url, {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${token.accessToken}`,
+            Authorization: token.accessToken,
+            "x-access-token": token.accessToken,
           },
         });
         if (userRes.ok) {
           const userDetails = await userRes.json();
           session.user = userDetails;
-          session.user.email = `${userDetails.email}`;
+          session.user.username = `${userDetails.username}`;
         }
       }
+      console.log(session);
       return session;
     },
+
     async jwt({ token, user }) {
+      console.log(token, user);
       if (user) {
         token.refreshToken = user.refresh_token;
         token.accessToken = user.access_token;
         token.expiresIn = Date.now() + parseInt(user.expires_in) * 1000 - 2000;
       }
+      console.log(token);
       if (Date.now() < token.expiresIn) {
         return token;
       }
