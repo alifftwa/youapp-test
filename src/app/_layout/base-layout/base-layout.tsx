@@ -1,4 +1,4 @@
-import Providers from "../providers/Providers";
+import Providers from "../../_components/providers/Providers";
 
 const BaseLayout = ({ children }) => {
   return (

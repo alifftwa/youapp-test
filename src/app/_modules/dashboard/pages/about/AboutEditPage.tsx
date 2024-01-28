@@ -52,9 +52,17 @@ const AboutEditPage = () => {
                 <button>
                   <div className="w-14 h-14 mt-10 rounded-xl bg-[#212B31]">
                     <div className="">
-                      <p className="font-light text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#F3EDA6] from-[-6.8%] via-[#F8FAE5] via-[89.01%] to-[#D5BE88] to-[100.43%] ">
-                        +
-                      </p>
+                      <label htmlFor="add_image">
+                        <p className="font-light text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#F3EDA6] from-[-6.8%] via-[#F8FAE5] via-[89.01%] to-[#D5BE88] to-[100.43%] ">
+                          +
+                        </p>
+                      </label>
+                      <input
+                        type="file"
+                        name=""
+                        id="add_image"
+                        style={{ visibility: "hidden" }}
+                      />
                     </div>
                   </div>
                 </button>
